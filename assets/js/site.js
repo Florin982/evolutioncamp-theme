@@ -151,3 +151,20 @@ document.documentElement.classList.add('evo-js');
 		btns.forEach(function (b, i) { b.addEventListener('click', function () { open(list, i, b, null); }); });
 	});
 })();
+
+/* ---------- Embed di terzi: l'iframe nasce solo al click ---------- */
+(function () {
+	document.addEventListener('click', function (e) {
+		var b = e.target.closest && e.target.closest('.evo-embed__btn');
+		if (!b) return;
+		var fig = b.closest('[data-evo-embed]');
+		var f = document.createElement('iframe');
+		f.src = fig.getAttribute('data-evo-embed');
+		f.title = fig.getAttribute('data-title') || '';
+		f.allow = 'autoplay; fullscreen; picture-in-picture';
+		f.allowFullscreen = true;
+		f.referrerPolicy = 'strict-origin-when-cross-origin';
+		fig.replaceChild(f, b);
+		f.focus();
+	});
+})();

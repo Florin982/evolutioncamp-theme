@@ -68,6 +68,7 @@ function evo_footer() {
 				<h4><?php echo esc_html($t['ct']); ?></h4>
 				<p>Via Laghi, 3 – Loc. Pian di Rose<br>61040 S. Ippolito (PU)</p>
 				<p><a href="tel:+393482502519">+39 348 25 02 519</a><br><a href="mailto:info@evolutioncamp.it">info@evolutioncamp.it</a></p>
+				<p class="evo-footer__social"><a href="https://www.facebook.com/pages/category/Community/Evolution-Camp-129532573820862/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/strayoga8/" target="_blank" rel="noopener">Instagram</a></p>
 				<p><a href="/privacy-cookies-policy/"><?php echo esc_html($t['privacy']); ?></a></p>
 			</div>
 		</div>
@@ -250,3 +251,28 @@ add_filter('render_block', function ($html, $block) {
 	}
 	return '<ul class="evo-mosaic evo-reveal" data-evo-lightbox>' . $out . '</ul>';
 }, 10, 2);
+
+/* ---- Contenuti di terzi (YouTube, Google Maps): si caricano solo al click, così non partono cookie prima della scelta ---- */
+add_shortcode('evo_embed', function ($a) {
+	$a = shortcode_atts(['tipo' => 'youtube', 'id' => '', 'titolo' => '', 'immagine' => ''], $a);
+	$en = function_exists('pll_current_language') && pll_current_language() === 'en';
+	if ($a['tipo'] === 'youtube' && preg_match('/^[\w-]{6,20}$/', $a['id'])) {
+		$src = 'https://www.youtube-nocookie.com/embed/' . $a['id'] . '?autoplay=1&rel=0&modestbranding=1';
+		$who = 'YouTube';
+		$label = $en ? 'Play the video' : 'Guarda il video';
+	} elseif ($a['tipo'] === 'mappa') {
+		$src = 'https://www.google.com/maps?q=' . rawurlencode("Evolution Camp, Via Laghi 3, 61040 Sant'Ippolito PU") . '&hl=' . ($en ? 'en' : 'it') . '&z=14&output=embed';
+		$who = 'Google Maps';
+		$label = $en ? 'Show the map' : 'Mostra la mappa';
+	} else {
+		return '';
+	}
+	$note = $en
+		? "Clicking loads content from $who, which may set third-party cookies."
+		: "Cliccando si carica un contenuto di $who, che può impostare cookie di terze parti.";
+	$priv = $en ? 'Privacy & cookies' : 'Privacy e cookies';
+	$style = $a['immagine'] ? ' style="background-image:linear-gradient(rgba(20,36,26,.45),rgba(20,36,26,.65)),url(' . esc_url($a['immagine']) . ')"' : '';
+	return '<figure class="evo-embed evo-embed--' . esc_attr($a['tipo']) . '" data-evo-embed="' . esc_url($src) . '" data-title="' . esc_attr($a['titolo']) . '">'
+		. '<button type="button" class="evo-embed__btn"' . $style . '><span class="evo-embed__play" aria-hidden="true"></span><strong>' . esc_html($label) . '</strong></button>'
+		. '<figcaption class="evo-embed__note">' . esc_html($note) . ' <a href="/privacy-cookies-policy/">' . esc_html($priv) . '</a></figcaption></figure>';
+});

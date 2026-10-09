@@ -11,14 +11,14 @@ $tx = $en ? [
 	'bk_t' => 'Book this accommodation', 'bk_p' => 'Check availability and prices on our booking page.', 'call' => 'Or call us',
 	'others' => 'Other accommodation', 'gal' => 'Gallery',
 	'inc' => ['Linen and towels', 'Air conditioning and wifi', 'Wardrobe and hairdryer', 'Shared kitchen, washing machine and Smart TV', 'Parking and garden'],
-	'contact' => '/en/contact/', 'list' => '/en/accommodation/',
+	'contact' => '/en/contact/#form', 'list' => '/en/accommodation/',
 ] : [
 	'back' => 'Tutti gli alloggi', 'beds' => 'posti letto', 'bath' => 'bagno', 'baths' => 'bagni', 'ideal' => 'Ideale per',
 	'inc_t' => 'Incluso nel soggiorno', 'feat_t' => 'Caratteristiche', 'book' => 'Prenota', 'ask' => 'Chiedi informazioni',
 	'bk_t' => 'Prenota questo alloggio', 'bk_p' => 'Verifica disponibilità e prezzi sulla nostra pagina di prenotazione.', 'call' => 'Oppure chiamaci',
 	'others' => 'Altri alloggi', 'gal' => 'Galleria',
 	'inc' => ['Biancheria e asciugamani', 'Aria condizionata e wifi', 'Armadio e asciugacapelli', 'Cucina, lavatrice e Smart TV ad uso comune', 'Parcheggio e giardino'],
-	'contact' => '/contatti/', 'list' => '/alloggi/',
+	'contact' => '/contatti/#form', 'list' => '/alloggi/',
 ];
 
 while (have_posts()) :

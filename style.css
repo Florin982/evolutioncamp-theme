@@ -4,7 +4,7 @@ Theme URI:    https://evolutioncamp.it
 Description:  Child theme di Kadence per Evolution Camp.
 Author:       Evolution Camp
 Template:     kadence
-Version:      0.2.0
+Version:      0.3.7
 Text Domain:  evolutioncamp-child
 */
 
@@ -610,3 +610,33 @@ a{transition:color .2s ease}
 	.evo-center .wp-block-button__link,.wp-block-buttons.is-content-justification-center .wp-block-button__link{width:100%}
 }
 .evo-cta .evo-eyebrow{color:var(--evo-verde)}
+
+/* ---------- Embed al click (YouTube, Google Maps) ---------- */
+.evo-embed{margin:0;position:relative;border-radius:var(--evo-radius);overflow:hidden;background:var(--evo-foresta-2);box-shadow:var(--evo-shadow)}
+.evo-embed__btn,.evo-embed iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
+.evo-embed--mappa .evo-embed__btn,.evo-embed--mappa iframe{aspect-ratio:16/7;min-height:280px}
+.evo-embed__btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:1rem;color:#fff;cursor:pointer;border:0;background:var(--evo-foresta-2) center/cover no-repeat;font-family:var(--evo-font-head);font-size:1rem;letter-spacing:.04em;text-transform:uppercase}
+.evo-embed__btn strong{font-weight:700;color:#fff}
+.evo-embed__play{width:72px;height:72px;border-radius:50%;background:var(--evo-bordeaux);position:relative;transition:transform .2s,background .2s}
+.evo-embed__play::after{content:"";position:absolute;left:29px;top:22px;border-left:22px solid #fff;border-top:14px solid transparent;border-bottom:14px solid transparent}
+.evo-embed--mappa .evo-embed__play::after{left:25px;top:20px;width:22px;height:22px;border:0;background:#fff;border-radius:50% 50% 50% 0;transform:rotate(-45deg)}
+.evo-embed__btn:hover .evo-embed__play,.evo-embed__btn:focus-visible .evo-embed__play{background:var(--evo-bordeaux-dark);transform:scale(1.07)}
+.evo-embed__btn:focus-visible{outline:3px solid var(--evo-verde);outline-offset:-6px}
+.evo-embed__note{padding:.7rem 1rem;font-size:.8rem;background:var(--evo-sabbia-2);color:var(--evo-grigio)}
+.evo-embed__note a{color:inherit;text-decoration:underline}
+.evo-footer__social a{color:inherit}
+
+/* Pulsanti "outline" nella copertina: sfondo bianco pieno, testo scuro */
+.evo-hero .wp-block-button.is-style-outline .wp-block-button__link{background:#fff;border-color:#fff;color:var(--evo-foresta)}
+.evo-hero .wp-block-button.is-style-outline .wp-block-button__link:hover{background:var(--evo-bordeaux);border-color:var(--evo-bordeaux);color:#fff}
+/* Pulsanti pieni nella copertina: al passaggio del mouse sfondo bianco, testo bordeaux */
+.evo-hero .wp-block-button:not(.is-style-outline) .wp-block-button__link:hover{background:#fff!important;color:var(--evo-bordeaux)!important;border-color:var(--evo-bordeaux)}
+/* Targa dei fondi europei (sezione "Il camp si espande") */
+.evo-targa img{border:5px solid #fff;box-shadow:var(--evo-shadow);width:100%;height:auto;aspect-ratio:auto;object-fit:contain}
+/* Ancora #form: lascia spazio sotto l'header fisso */
+#form{scroll-margin-top:110px}
+/* Citazione su 3 righe: niente larghezza massima, corpo che si adatta al telefono */
+.evo-quote--3{max-width:none;font-size:clamp(1.1rem,5.2vw,2.1rem)}
+/* Pulsanti a contorno nella fascia CTA: sfondo bianco, testo bordeaux; hover bordeaux con testo bianco */
+.evo-cta .wp-block-button.is-style-outline .wp-block-button__link{background:#fff;border-color:#fff;color:var(--evo-bordeaux)}
+.evo-cta .wp-block-button.is-style-outline .wp-block-button__link:hover{background:var(--evo-bordeaux);border-color:var(--evo-bordeaux);color:#fff}
