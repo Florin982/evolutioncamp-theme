@@ -66,8 +66,12 @@ while (have_posts()) :
 					<p class="evo-eyebrow"><?php echo esc_html($d['struttura'] ?: $d['tipo_label']); ?></p>
 					<h2><?php the_title(); ?></h2>
 					<p class="evo-booking__facts"><?php echo esc_html(implode(' · ', array_filter([$d['posti'] ? $d['posti'] . ' ' . $tx['beds'] : '', $d['bagni'] ? $bagni : '']))); ?></p>
-					<p><?php echo esc_html($tx['bk_p']); ?></p>
-					<a class="evo-btn evo-btn--block" href="<?php echo esc_url($d['url']); ?>" target="_blank" rel="noopener"><?php echo esc_html($tx['book']); ?></a>
+					<?php if (shortcode_exists('evo_prenota')) : ?>
+						<?php echo do_shortcode('[evo_prenota alloggio="' . (int) $id . '"]'); ?>
+					<?php else : ?>
+						<p><?php echo esc_html($tx['bk_p']); ?></p>
+						<a class="evo-btn evo-btn--block" href="<?php echo esc_url($d['url']); ?>" target="_blank" rel="noopener"><?php echo esc_html($tx['book']); ?></a>
+					<?php endif; ?>
 					<a class="evo-btn evo-btn--ghost evo-btn--block" href="<?php echo esc_url($tx['contact']); ?>"><?php echo esc_html($tx['ask']); ?></a>
 					<p class="evo-booking__call"><?php echo esc_html($tx['call']); ?>: <a href="tel:+393482502519">+39 348 25 02 519</a></p>
 				</aside>
