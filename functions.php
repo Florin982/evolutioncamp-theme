@@ -3,6 +3,8 @@
  * Evolution Camp - child theme di Kadence.
  */
 
+require_once __DIR__ . '/inc/smtp.php';
+
 add_action('wp_enqueue_scripts', function () {
 	$ver = wp_get_theme()->get('Version');
 	// Kadence carica già il proprio CSS: aggiungiamo quello del child dopo il parent.
