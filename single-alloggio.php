@@ -62,7 +62,7 @@ while (have_posts()) :
 					<ul class="evo-checks"><?php foreach ($tx['inc'] as $f) { echo '<li>' . esc_html($f) . '</li>'; } ?></ul>
 				</div>
 
-				<aside class="evo-booking" aria-label="<?php echo esc_attr($tx['bk_t']); ?>">
+				<aside class="evo-booking" id="prenota" aria-label="<?php echo esc_attr($tx['bk_t']); ?>">
 					<p class="evo-eyebrow"><?php echo esc_html($d['struttura'] ?: $d['tipo_label']); ?></p>
 					<h2><?php the_title(); ?></h2>
 					<p class="evo-booking__facts"><?php echo esc_html(implode(' · ', array_filter([$d['posti'] ? $d['posti'] . ' ' . $tx['beds'] : '', $d['bagni'] ? $bagni : '']))); ?></p>

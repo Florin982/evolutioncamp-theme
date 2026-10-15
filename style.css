@@ -634,7 +634,7 @@ a{transition:color .2s ease}
 /* Targa dei fondi europei (sezione "Il camp si espande") */
 .evo-targa img{border:5px solid #fff;box-shadow:var(--evo-shadow);width:100%;height:auto;aspect-ratio:auto;object-fit:contain}
 /* Ancora #form: lascia spazio sotto l'header fisso */
-#form{scroll-margin-top:110px}
+#form,#prenota{scroll-margin-top:110px}
 /* Citazione su 3 righe: niente larghezza massima, corpo che si adatta al telefono */
 .evo-quote--3{max-width:none;font-size:clamp(1.1rem,5.2vw,2.1rem)}
 /* Pulsanti a contorno nella fascia CTA: sfondo bianco, testo bordeaux; hover bordeaux con testo bianco */
